@@ -1,705 +1,304 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portafolio Inmobiliario — Habi Medellín</title>
-  <meta name="description" content="Apartamentos en venta en Medellín y área metropolitana. El Poblado, Laureles, Envigado, Sabaneta, El Retiro. Asesoría gratuita con Habi." />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portafolio Inmobiliario | Habi Medellín</title>
+  <meta name="description" content="Apartamentos en venta en Medellín y área metropolitana. El Poblado, Envigado, Sabaneta, La Estrella, Itagüí. Asesoría gratuita con broker Habi."/>
   <style>
-    :root {
-      --primary:  #1a3a5c;
-      --accent:   #e8a020;
-      --green:    #16a34a;
-      --text:     #1f2937;
-      --muted:    #6b7280;
-      --border:   #e5e7eb;
-      --bg:       #f9fafb;
-      --white:    #ffffff;
-      --radius:   12px;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    /* ── NAV ── */
-    nav {
-      background: var(--primary);
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .nav-brand {
-      color: var(--white);
-      font-weight: 700;
-      font-size: 17px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-brand span {
-      background: var(--accent);
-      color: var(--white);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 2px 8px;
-      border-radius: 20px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .nav-links a {
-      color: rgba(255,255,255,.75);
-      text-decoration: none;
-      font-size: 14px;
-      transition: color .2s;
-    }
-
-    .nav-links a:hover { color: var(--white); }
-
-    /* ── HERO ── */
-    .hero {
-      background: linear-gradient(135deg, #1a3a5c 0%, #0f2340 100%);
-      color: var(--white);
-      text-align: center;
-      padding: 72px 24px 64px;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: rgba(232,160,32,.2);
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 20px;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 {
-      font-size: clamp(26px, 5vw, 44px);
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 16px;
-    }
-
-    .hero h1 em {
-      color: var(--accent);
-      font-style: normal;
-    }
-
-    .hero p {
-      font-size: 17px;
-      opacity: .8;
-      max-width: 540px;
-      margin: 0 auto 32px;
-    }
-
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .hero-stat strong {
-      display: block;
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--accent);
-    }
-
-    .hero-stat span {
-      font-size: 13px;
-      opacity: .7;
-    }
-
-    /* ── ZONES ── */
-    .zones {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 24px;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .zone-tag {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--primary);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 5px 14px;
-      border-radius: 20px;
-    }
-
-    /* ── MAIN ── */
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 56px 24px 80px;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .section-title h2 {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--primary);
-      margin-bottom: 8px;
-    }
-
-    .section-title p {
-      color: var(--muted);
-      font-size: 16px;
-    }
-
-    /* ── PROPERTY CARDS ── */
-    .properties {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
-      gap: 32px;
-      margin-bottom: 64px;
-    }
-
-    .card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 1px 3px rgba(0,0,0,.06);
-      transition: box-shadow .25s, transform .25s;
-    }
-
-    .card:hover {
-      box-shadow: 0 8px 24px rgba(0,0,0,.1);
-      transform: translateY(-3px);
-    }
-
-    /* Image container */
-    .card-img {
-      position: relative;
-      height: 280px;
-      overflow: hidden;
-    }
-
-    .card-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .4s;
-    }
-
-    .card:hover .card-img img { transform: scale(1.04); }
-
-    .card-badge {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      background: var(--green);
-      color: var(--white);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .5px;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 6px;
-    }
-
-    .card-price-tag {
-      position: absolute;
-      bottom: 14px;
-      right: 14px;
-      background: rgba(26,58,92,.92);
-      backdrop-filter: blur(4px);
-      color: var(--white);
-      font-size: 18px;
-      font-weight: 800;
-      padding: 8px 16px;
-      border-radius: 8px;
-    }
-
-    .card-price-tag small {
-      font-size: 11px;
-      font-weight: 400;
-      opacity: .8;
-      display: block;
-      line-height: 1;
-      margin-bottom: 2px;
-    }
-
-    /* Body */
-    .card-body { padding: 24px 28px; }
-
-    .card-location {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 6px;
-    }
-
-    .card-title {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--primary);
-      margin-bottom: 12px;
-    }
-
-    .card-desc {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
-    /* Specs grid */
-    .specs {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .spec {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 10px 8px;
-      text-align: center;
-    }
-
-    .spec-icon {
-      font-size: 18px;
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .spec-value {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--primary);
-      display: block;
-    }
-
-    .spec-label {
-      font-size: 10px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .5px;
-    }
-
-    /* Features */
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-
-    .feature {
-      background: #eff6ff;
-      color: var(--primary);
-      font-size: 12px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 20px;
-      border: 1px solid #bfdbfe;
-    }
-
-    /* CTA */
-    .card-cta {
-      display: flex;
-      gap: 12px;
-    }
-
-    .btn-wa {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: #25D366;
-      color: var(--white);
-      font-size: 14px;
-      font-weight: 700;
-      padding: 13px 16px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background .2s;
-    }
-
-    .btn-wa:hover { background: #1ebe5d; }
-
-    .btn-wa svg { flex-shrink: 0; }
-
-    .btn-info {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--primary);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 13px 18px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background .2s;
-      white-space: nowrap;
-    }
-
-    .btn-info:hover { background: var(--border); }
-
-    /* Divider */
-    .card-divider {
-      height: 1px;
-      background: var(--border);
-      margin: 0 28px 16px;
-    }
-
-    .card-footer {
-      padding: 0 28px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .card-footer strong { color: var(--green); }
-
-    /* ── CONTACT BANNER ── */
-    .contact-banner {
-      background: var(--primary);
-      border-radius: var(--radius);
-      padding: 48px 40px;
-      text-align: center;
-      color: var(--white);
-      margin-bottom: 32px;
-    }
-
-    .contact-banner h2 {
-      font-size: 26px;
-      font-weight: 800;
-      margin-bottom: 12px;
-    }
-
-    .contact-banner p {
-      opacity: .8;
-      margin-bottom: 28px;
-      font-size: 16px;
-    }
-
-    .btn-wa-lg {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: #25D366;
-      color: var(--white);
-      font-size: 16px;
-      font-weight: 700;
-      padding: 16px 32px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background .2s;
-    }
-
-    .btn-wa-lg:hover { background: #1ebe5d; }
-
-    .contact-note {
-      margin-top: 16px;
-      font-size: 13px;
-      opacity: .6;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 32px 24px;
-      font-size: 13px;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      background: var(--white);
-    }
-
-    footer .legal-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-
-    footer a { color: var(--primary); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 700px) {
-      .properties { grid-template-columns: 1fr; }
-      .specs { grid-template-columns: repeat(2, 1fr); }
-      .nav-links { display: none; }
-      .contact-banner { padding: 32px 20px; }
-      .card-body { padding: 20px; }
-    }
+    :root{--g900:#0d1a12;--g800:#142010;--g700:#1c3020;--g600:#274a2e;--g500:#2d6a4f;--gold:#c9a84c;--gold2:#e8c96a;--white:#ffffff;--off:#f4f3ee;--gray1:#e8e8e4;--gray2:#a8a89e;--gray3:#5a5a52;--gray4:#2a2a24;--text:#1a1a14;--radius:10px;--shadow:0 4px 24px rgba(0,0,0,.18)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--off);color:var(--text);font-size:16px;line-height:1.65}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    .tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:3px 10px;border-radius:20px}
+    .tag-gold{background:var(--gold);color:var(--g900)}
+    .tag-green{background:var(--g600);color:var(--white)}
+    nav{position:sticky;top:0;z-index:200;background:var(--g900);border-bottom:1px solid var(--g700);height:64px;display:flex;align-items:center;padding:0 32px;gap:24px}
+    .nav-logo{display:flex;align-items:center;gap:10px;color:var(--white);font-weight:800;font-size:18px;letter-spacing:-.3px;flex-shrink:0}
+    .nav-logo .dot{width:8px;height:8px;background:var(--gold);border-radius:50%}
+    .nav-logo small{font-size:11px;font-weight:400;color:var(--gray2);letter-spacing:1px;text-transform:uppercase}
+    .nav-spacer{flex:1}
+    .nav-links{display:flex;align-items:center;gap:28px}
+    .nav-links a{color:var(--gray2);font-size:13px;font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:var(--white)}
+    .nav-social{display:flex;align-items:center;gap:14px;border-left:1px solid var(--g700);padding-left:20px;margin-left:4px}
+    .nav-social a{color:var(--gray2);display:flex;align-items:center;transition:color .2s}
+    .nav-social a:hover{color:var(--gold)}
+    .nav-cta{background:var(--gold)!important;color:var(--g900)!important;font-weight:700!important;font-size:13px!important;padding:8px 18px;border-radius:6px;transition:background .2s!important}
+    .nav-cta:hover{background:var(--gold2)!important}
+    .hero{background:var(--g900);padding:88px 32px 80px;text-align:center;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(45,106,79,.25) 0%,transparent 70%);pointer-events:none}
+    .hero-eyebrow{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:24px}
+    .hero-eyebrow span{width:32px;height:1px;background:var(--gold);opacity:.6}
+    .hero-eyebrow p{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+    .hero h1{font-size:clamp(32px,5vw,58px);font-weight:800;color:var(--white);line-height:1.1;letter-spacing:-.5px;margin-bottom:20px;max-width:760px;margin-left:auto;margin-right:auto}
+    .hero h1 em{color:var(--gold);font-style:normal}
+    .hero p{font-size:17px;color:var(--gray2);max-width:520px;margin:0 auto 40px}
+    .hero-actions{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--g900);font-size:14px;font-weight:700;padding:14px 28px;border-radius:var(--radius);transition:background .2s,transform .15s}
+    .btn-primary:hover{background:var(--gold2);transform:translateY(-1px)}
+    .btn-outline{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--g600);color:var(--gray1);font-size:14px;font-weight:600;padding:13px 24px;border-radius:var(--radius);transition:border-color .2s,color .2s}
+    .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+    .stats-bar{background:var(--g800);border-top:1px solid var(--g700);border-bottom:1px solid var(--g700);padding:22px 32px;display:flex;justify-content:center;gap:56px;flex-wrap:wrap}
+    .stat{text-align:center}
+    .stat strong{display:block;font-size:26px;font-weight:800;color:var(--gold);line-height:1;margin-bottom:4px}
+    .stat span{font-size:12px;color:var(--gray2);text-transform:uppercase;letter-spacing:.8px}
+    main{max-width:1240px;margin:0 auto;padding:56px 24px 80px}
+    .filters-wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:36px}
+    .filters-wrap h2{font-size:22px;font-weight:800;color:var(--g700)}
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    .filter-btn{background:var(--white);border:1.5px solid var(--gray1);color:var(--gray3);font-size:12px;font-weight:600;padding:7px 16px;border-radius:20px;cursor:pointer;transition:all .2s}
+    .filter-btn:hover,.filter-btn.active{background:var(--g700);border-color:var(--g700);color:var(--white)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:28px;margin-bottom:80px}
+    .card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06);transition:box-shadow .25s,transform .25s;display:flex;flex-direction:column}
+    .card:hover{box-shadow:var(--shadow);transform:translateY(-4px)}
+    .card-img{position:relative;height:230px;overflow:hidden;background:var(--g900)}
+    .card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+    .card:hover .card-img img{transform:scale(1.06)}
+    .card-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,26,18,.7) 0%,transparent 55%)}
+    .card-badges{position:absolute;top:12px;left:12px;display:flex;gap:6px}
+    .card-price{position:absolute;bottom:12px;right:12px;background:var(--gold);color:var(--g900);font-size:16px;font-weight:800;padding:6px 14px;border-radius:6px;line-height:1.2}
+    .card-price small{display:block;font-size:9px;font-weight:600;letter-spacing:.5px;opacity:.7;text-transform:uppercase}
+    .card-zone{position:absolute;bottom:14px;left:14px;color:var(--white);font-size:12px;font-weight:600;letter-spacing:.5px}
+    .card-body{padding:20px 22px;flex:1;display:flex;flex-direction:column}
+    .card-location{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--g500);margin-bottom:4px}
+    .card-title{font-size:19px;font-weight:800;color:var(--g800);margin-bottom:14px;line-height:1.2}
+    .specs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+    .spec{background:var(--off);border:1px solid var(--gray1);border-radius:7px;padding:8px 4px;text-align:center}
+    .spec-icon{font-size:15px;margin-bottom:2px}
+    .spec-val{display:block;font-size:13px;font-weight:700;color:var(--g700);line-height:1}
+    .spec-lbl{font-size:9px;color:var(--gray2);text-transform:uppercase;letter-spacing:.5px}
+    .features{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+    .feat{background:var(--off);border:1px solid var(--gray1);color:var(--gray3);font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px}
+    .card-meta{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--gray2);padding:10px 0;border-top:1px solid var(--gray1);margin-bottom:14px}
+    .card-meta .estrato{background:var(--g700);color:var(--white);font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px}
+    .card-cta{display:flex;gap:8px;margin-top:auto}
+    .btn-wa{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;background:#25D366;color:var(--white);font-size:13px;font-weight:700;padding:11px 12px;border-radius:7px;transition:background .2s}
+    .btn-wa:hover{background:#1ebe5d}
+    .btn-detail{display:flex;align-items:center;justify-content:center;background:var(--off);border:1.5px solid var(--gray1);color:var(--gray3);font-size:12px;font-weight:600;padding:11px 14px;border-radius:7px;transition:all .2s;white-space:nowrap}
+    .btn-detail:hover{border-color:var(--g600);color:var(--g700)}
+    .contact-section{background:var(--g900);border-radius:16px;overflow:hidden;margin-bottom:80px;display:grid;grid-template-columns:1fr 1fr}
+    .contact-left{padding:56px 48px;background:linear-gradient(135deg,var(--g800) 0%,var(--g900) 100%);display:flex;flex-direction:column;justify-content:center}
+    .contact-left .eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+    .contact-left h2{font-size:30px;font-weight:800;color:var(--white);line-height:1.2;margin-bottom:16px}
+    .contact-left p{color:var(--gray2);font-size:15px;margin-bottom:32px;line-height:1.7}
+    .contact-checklist{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .contact-checklist li{display:flex;align-items:center;gap:10px;color:var(--gray2);font-size:14px}
+    .contact-checklist li::before{content:'✓';width:20px;height:20px;flex-shrink:0;background:var(--g600);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gold);font-weight:700}
+    .contact-right{padding:48px 44px;background:var(--white)}
+    .contact-right h3{font-size:18px;font-weight:700;color:var(--g800);margin-bottom:6px}
+    .contact-right .sub{font-size:13px;color:var(--gray2);margin-bottom:28px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .form-group{display:flex;flex-direction:column;gap:5px}
+    .form-group.full{grid-column:1/-1}
+    .form-group label{font-size:12px;font-weight:700;color:var(--gray3);text-transform:uppercase;letter-spacing:.5px}
+    .form-group input,.form-group select{border:1.5px solid var(--gray1);border-radius:7px;padding:10px 12px;font-size:14px;color:var(--text);background:var(--off);outline:none;transition:border-color .2s,background .2s;font-family:inherit;width:100%}
+    .form-group input:focus,.form-group select:focus{border-color:var(--g500);background:var(--white)}
+    .budget-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .input-prefix{position:relative}
+    .input-prefix span{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--gray2);font-weight:600;pointer-events:none}
+    .input-prefix input{padding-left:28px}
+    .form-submit{margin-top:20px;width:100%;background:var(--g700);color:var(--white);font-size:15px;font-weight:700;padding:14px;border-radius:8px;border:none;cursor:pointer;transition:background .2s,transform .15s;font-family:inherit}
+    .form-submit:hover{background:var(--g600);transform:translateY(-1px)}
+    .form-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
+    .form-note{font-size:11px;color:var(--gray2);text-align:center;margin-top:12px}
+    .form-note a{color:var(--g500)}
+    .form-success{display:none;text-align:center;padding:32px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;margin-top:16px}
+    .form-success h4{color:#15803d;font-size:17px;margin-bottom:6px}
+    .form-success p{color:#4a7c59;font-size:14px}
+    .trust{background:var(--g800);border-radius:12px;padding:36px 40px;display:flex;align-items:center;justify-content:space-around;flex-wrap:wrap;gap:24px;margin-bottom:80px}
+    .trust-item{text-align:center;color:var(--gray2);font-size:13px;max-width:180px}
+    .trust-item svg{margin:0 auto 8px;color:var(--gold)}
+    .trust-item strong{display:block;color:var(--white);font-size:15px;margin-bottom:4px}
+    footer{background:var(--g900);color:var(--gray2);border-top:1px solid var(--g700)}
+    .footer-top{max-width:1240px;margin:0 auto;padding:48px 32px 32px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+    .footer-brand .logo{font-size:20px;font-weight:800;color:var(--white);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+    .footer-brand .logo .dot{width:7px;height:7px;background:var(--gold);border-radius:50%}
+    .footer-brand p{font-size:13px;line-height:1.7;max-width:280px;margin-bottom:20px}
+    .footer-social{display:flex;gap:12px}
+    .footer-social a{width:36px;height:36px;background:var(--g700);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--gray2);transition:background .2s,color .2s}
+    .footer-social a:hover{background:var(--gold);color:var(--g900)}
+    .footer-col h4{font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+    .footer-col ul{list-style:none}
+    .footer-col li{margin-bottom:8px}
+    .footer-col a{font-size:13px;color:var(--gray2);transition:color .2s}
+    .footer-col a:hover{color:var(--white)}
+    .footer-bottom{border-top:1px solid var(--g700);padding:16px 32px;text-align:center;font-size:12px;max-width:1240px;margin:0 auto}
+    @media(max-width:960px){.contact-section{grid-template-columns:1fr}.contact-left{padding:40px 32px}.contact-right{padding:36px 28px}.footer-top{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}.nav-links{display:none}}
+    @media(max-width:640px){nav{padding:0 16px}.hero{padding:56px 20px 48px}.stats-bar{gap:28px}main{padding:40px 16px 60px}.grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr;padding:32px 20px}.nav-social{display:none}.trust{padding:24px 20px}.budget-row{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <div class="nav-brand">
-    Habi Medellín
-    <span>Broker Oficial</span>
+  <div class="nav-logo">
+    <div class="dot"></div>
+    <div>Habi Medellín<br><small>Broker Oficial</small></div>
   </div>
+  <div class="nav-spacer"></div>
   <div class="nav-links">
     <a href="#propiedades">Propiedades</a>
-    <a href="#contacto">Contacto</a>
-    <a href="index.html">Privacidad</a>
+    <a href="#contacto">Contáctame</a>
+    <a href="https://jmolinapalacio-ai.github.io/politicas-de-privacidad/">Privacidad</a>
+  </div>
+  <div class="nav-social">
+    <a href="https://www.facebook.com/TUPAGINA" target="_blank" rel="noopener" title="Facebook">
+      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/TUPAGINA" target="_blank" rel="noopener" title="Instagram">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="https://wa.me/573007455245" target="_blank" rel="noopener" title="WhatsApp">
+      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+    <a class="nav-cta" href="#contacto">Asesoría gratis</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">Inventario disponible 2026</div>
-  <h1>Encuentra tu apartamento<br>en <em>Medellín</em></h1>
-  <p>Asesoría inmobiliaria gratuita. Te ayudamos a encontrar el inmueble ideal según tu zona, presupuesto y forma de pago.</p>
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <strong>100%</strong>
-      <span>Asesoría gratuita</span>
-    </div>
-    <div class="hero-stat">
-      <strong>5</strong>
-      <span>Zonas disponibles</span>
-    </div>
-    <div class="hero-stat">
-      <strong>Habi</strong>
-      <span>Respaldo institucional</span>
-    </div>
+  <div class="hero-eyebrow"><span></span><p>Broker Oficial Habi · Medellín &amp; Área Metropolitana</p><span></span></div>
+  <h1>Tu próximo apartamento<br>en <em>Medellín</em> está aquí</h1>
+  <p>Asesoría inmobiliaria gratuita. Propiedades verificadas, precios directos y acompañamiento hasta el cierre.</p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="#propiedades">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      Ver propiedades
+    </a>
+    <a class="btn-outline" href="#contacto">Hablar con el broker</a>
   </div>
 </section>
 
-<!-- ZONES -->
-<div class="zones">
-  <div class="zone-tag">El Poblado</div>
-  <div class="zone-tag">Laureles</div>
-  <div class="zone-tag">Envigado</div>
-  <div class="zone-tag">Sabaneta</div>
-  <div class="zone-tag">El Retiro</div>
+<div class="stats-bar">
+  <div class="stat"><strong>11</strong><span>Propiedades</span></div>
+  <div class="stat"><strong>$250M</strong><span>Precio desde</span></div>
+  <div class="stat"><strong>6</strong><span>Zonas cubiertas</span></div>
+  <div class="stat"><strong>100%</strong><span>Asesoría gratis</span></div>
+  <div class="stat"><strong>Habi</strong><span>Respaldo institucional</span></div>
 </div>
 
-<!-- MAIN -->
 <main>
-  <div class="section-title">
-    <h2 id="propiedades">Propiedades disponibles</h2>
-    <p>Inmuebles verificados del inventario Habi — precios directos, sin intermediarios adicionales</p>
+  <div class="filters-wrap">
+    <h2 id="propiedades">Portafolio de propiedades</h2>
+    <div class="filters">
+      <button class="filter-btn active" data-zone="all">Todas</button>
+      <button class="filter-btn" data-zone="El Poblado">El Poblado</button>
+      <button class="filter-btn" data-zone="Sabaneta">Sabaneta</button>
+      <button class="filter-btn" data-zone="Envigado">Envigado</button>
+      <button class="filter-btn" data-zone="La Estrella">La Estrella</button>
+      <button class="filter-btn" data-zone="Itagüí">Itagüí</button>
+    </div>
   </div>
 
-  <div class="properties">
+  <div class="grid">
 
-    <!-- CARD 1: Aires del Campo -->
-    <div class="card">
-      <div class="card-img">
-        <img src="aires_del_campo.jpg" alt="Apartamento Aires del Campo — Sabaneta" loading="lazy" />
-        <div class="card-badge">Disponible</div>
-        <div class="card-price-tag">
-          <small>Desde</small>
-          $289 M
-        </div>
-      </div>
-
-      <div class="card-body">
-        <div class="card-location">Sabaneta · Antioquia</div>
-        <div class="card-title">Aires del Campo</div>
-        <div class="card-desc">
-          Apartamento moderno con sala-comedor integrado, balcón privado con vista verde,
-          cocina con pasaplatos y acabados de calidad. Zona residencial tranquila con
-          excelente acceso al metro.
-        </div>
-
-        <div class="specs">
-          <div class="spec">
-            <span class="spec-icon">🛏</span>
-            <span class="spec-value">2</span>
-            <span class="spec-label">Hab.</span>
-          </div>
-          <div class="spec">
-            <span class="spec-icon">🚿</span>
-            <span class="spec-value">1</span>
-            <span class="spec-label">Baños</span>
-          </div>
-          <div class="spec">
-            <span class="spec-icon">📐</span>
-            <span class="spec-value">58 m²</span>
-            <span class="spec-label">Área</span>
-          </div>
-          <div class="spec">
-            <span class="spec-icon">🏢</span>
-            <span class="spec-value">Apto</span>
-            <span class="spec-label">Tipo</span>
-          </div>
-        </div>
-
-        <div class="features">
-          <span class="feature">Balcón privado</span>
-          <span class="feature">Cocina equipada</span>
-          <span class="feature">Zona verde</span>
-          <span class="feature">Portería 24h</span>
-          <span class="feature">Cerca al metro</span>
-          <span class="feature">Acepta crédito</span>
-        </div>
-
-        <div class="card-cta">
-          <a class="btn-wa"
-             href="https://wa.me/573007455245?text=Hola%2C%20me%20interesa%20el%20apartamento%20Aires%20del%20Campo%20en%20Sabaneta%20%28%24289M%29.%20%C2%BFPodemos%20hablar%3F"
-             target="_blank" rel="noopener">
-            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            Consultar por WhatsApp
-          </a>
-          <a class="btn-info" href="#contacto">Más info</a>
-        </div>
-      </div>
-
-      <div class="card-divider"></div>
-      <div class="card-footer">
-        <span>Administración aprox. $180.000/mes</span>
-        <strong>Acepta HabiCredit</strong>
-      </div>
-    </div>
-
-    <!-- CARD 2: Corazón de Envigado -->
-    <div class="card">
-      <div class="card-img">
-        <img src="corazon_de_envigado.jpg" alt="Apartamento Corazón de Envigado" loading="lazy" />
-        <div class="card-badge">Disponible</div>
-        <div class="card-price-tag">
-          <small>Desde</small>
-          $340 M
-        </div>
-      </div>
-
-      <div class="card-body">
-        <div class="card-location">Envigado · Antioquia</div>
-        <div class="card-title">Corazón de Envigado</div>
-        <div class="card-desc">
-          Espacioso apartamento en el corazón de Envigado con sala amplia, pared en
-          piedra natural como elemento diferenciador, balcón con luz natural y ubicación
-          privilegiada a pasos de todo.
-        </div>
-
-        <div class="specs">
-          <div class="spec">
-            <span class="spec-icon">🛏</span>
-            <span class="spec-value">3</span>
-            <span class="spec-label">Hab.</span>
-          </div>
-          <div class="spec">
-            <span class="spec-icon">🚿</span>
-            <span class="spec-value">2</span>
-            <span class="spec-label">Baños</span>
-          </div>
-          <div class="spec">
-            <span class="spec-icon">📐</span>
-            <span class="spec-value">72 m²</span>
-            <span class="spec-label">Área</span>
-          </div>
-          <div class="spec">
-            <span class="spec-icon">🏢</span>
-            <span class="spec-value">Apto</span>
-            <span class="spec-label">Tipo</span>
-          </div>
-        </div>
-
-        <div class="features">
-          <span class="feature">Balcón amplio</span>
-          <span class="feature">Pared en piedra</span>
-          <span class="feature">Luz natural</span>
-          <span class="feature">Zona comercial</span>
-          <span class="feature">Parqueadero</span>
-          <span class="feature">Acepta crédito</span>
-        </div>
-
-        <div class="card-cta">
-          <a class="btn-wa"
-             href="https://wa.me/573007455245?text=Hola%2C%20me%20interesa%20el%20apartamento%20Coraz%C3%B3n%20de%20Envigado%20%28%24340M%29.%20%C2%BFPodemos%20hablar%3F"
-             target="_blank" rel="noopener">
-            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            Consultar por WhatsApp
-          </a>
-          <a class="btn-info" href="#contacto">Más info</a>
-        </div>
-      </div>
-
-      <div class="card-divider"></div>
-      <div class="card-footer">
-        <span>Administración aprox. $220.000/mes</span>
-        <strong>Acepta HabiCredit</strong>
-      </div>
-    </div>
-
-  </div><!-- /properties -->
-
-  <!-- CONTACT BANNER -->
-  <div class="contact-banner" id="contacto">
-    <h2>¿No encuentras lo que buscas?</h2>
-    <p>Cuéntanos tu zona, presupuesto y necesidades — tenemos más inventario disponible y te buscamos la opción ideal sin costo adicional.</p>
-    <a class="btn-wa-lg"
-       href="https://wa.me/573007455245?text=Hola%2C%20me%20interesa%20recibir%20asesor%C3%ADa%20inmobiliaria%20con%20Habi%20en%20Medell%C3%ADn."
-       target="_blank" rel="noopener">
-      <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
-      Escribir por WhatsApp
-    </a>
-    <p class="contact-note">Lunes a sábado · 8:00 a.m. – 6:00 p.m. · Medellín, Colombia</p>
+<div class="card" data-zone="Sabaneta"><div class="card-img"><img src="img/aires.png" alt="Aires del Campo" loading="lazy"/><div class="card-img-overlay"></div><div class="card-badges"><span class="tag tag-gold">Remodelado</span><span class="tag tag-green">Disponible</span></div><div class="card-price"><small>Precio</small>$300 M</div><div class="card-zone">Sabaneta</div></div><div class="card-body"><div class="card-location">Sabaneta - Cra 32 #77sur-205</div><div class="card-title">Aires del Campo</div><div class="specs"><div class="spec"><div class="spec-icon">🛏</div><span class="spec-val">2</span><span class="spec-lbl">Hab.</span></div><div class="spec"><div class="spec-icon">🚿</div><span class="spec-val">2</span><span class="spec-lbl">Banos</span></div><div class="spec"><div class="spec-icon">📐</div><span class="spec-val">57m2</span><span class="spec-lbl">Area</span></div><div class="spec"><div class="spec-icon">🏢</div><span class="spec-val">Piso 4</span><span class="spec-lbl">Nivel</span></div></div><div class="features"><span class="feat">Zona verde</span><span class="feat">Salon comunal</span><span class="feat">Zona ninos</span><span class="feat">Porteria</span><span class="feat">5 anos</span></div><div class="card-meta"><span>Adm. consultar con broker</span><span class="estrato">Estrato 2</span></div><div class="card-cta"><a class="btn-wa" href="https://wa.me/573007455245?text=Hola%2C%20me%20interesa%20Aires%20del%20Campo%20en%20Sabaneta%20%28%24300M%29.%20Podemos%20hablar%3F" target="_blank" rel="noopener"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Consultar</a><a class="btn-detail" href="#contacto">Mas info</a></div></div></div>
+<div class="card" data-zone="Sabaneta"><div class="card-img"><img src="img/brisas.png" alt="Brisas de Maria" loading="lazy"/><div class="card-img-overlay"></div><div class="card-badges"><span class="tag tag-green">Disponible</span></div><div class="card-price"><small>Precio</small>$250 M</div><div class="card-zone">Sabaneta</div></div><div class="card-body"><div class="card-location">Sabaneta - Cll 56sur #39-54</div><div class="card-title">Brisas de Maria</div><div class="specs"><div class="spec"><div class="spec-icon">🛏</div><span class="spec-val">2</span><span class="spec-lbl">Hab.</span></div><div class="spec"><div class="spec-icon">🚿</div><span class="spec-val">2</span><span class="spec-lbl">Banos</span></div><div class="spec"><div class="spec-icon">📐</div><span class="spec-val">62m2</span><span class="spec-lbl">Area</span></div><div class="spec"><div class="spec-icon">🏢</div><span class="spec-val">Piso 2</span><span class="spec-lbl">Nivel</span></div></div><div class="features"><span class="feat">Conjunto cerrado</span><span class="feat">17 anos</span></div><div class="card-meta"><span>Adm. consultar con broker</span><span class="estrato">Estrato 3</span></div><div class="card-cta"><a class="btn-wa" href="https://wa.me/573007455245?text=Hola%2C%20me%20interesa%20Brisas%20de%20Maria%20en%20Sabaneta%20%28%24250M%29.%20Podemos%20hablar%3F" target="_blank" rel="noopener"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Consultar</a><a class="btn-detail" href="#contacto">Mas info</a></div></div></div>
+<div class="card" data-zone="Envigado"><div class="card-img"><img src="img/corazon.png" alt="Corazon de Envigado" loading="lazy"/><div class="card-img-overlay"></div><div class="card-badges"><span class="tag tag-green">Disponible</span></div><div class="card-price"><small>Precio</small>$310 M</div><div class="card-zone">Envigado - San Rafael</div></div><div class="card-body"><div class="card-location">Envigado - Cll 41a sur #27a-50</div><div class="card-title">Corazon de Envigado</div><div class="specs"><div class="spec"><div class="spec-icon">🛏</div><span class="spec-val">3</span><span class="spec-lbl">Hab.</span></div><div class="spec"><div class="spec-icon">🚿</div><span class="spec-val">2</span><span class="spec-lbl">Banos</span></div><div class="spec"><div class="spec-icon">📐</div><span class="spec-val">53m2</span><span class="spec-lbl">Area</span></div><div class="spec"><div class="spec-icon">🏢</div><span class="spec-val">Piso 3</span><span class="spec-lbl">Nivel</span></div></div><div class="features"><span class="feat">Parq. visitante</span><span class="feat">Porteria</span><span class="feat">Zona ninos</span><span class="feat">15 anos</span></div><div class="card-meta"><span>Adm. consultar con broker</span><span class="estrato">Estrato 2</span></div><div class="card-cta"><a class="btn-wa" href="https://wa.me/573007455245?text=Hola%2C%20me%20interesa%20Corazon%20de%20Envigado%20%28%24310M%29.%20Podemos%20hablar%3F" target="_blank" rel="noopener"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Consultar</a><a class="btn-detail" href="#contacto">Mas info</a></div></div></div>
+<div class="card" data-zone="El Poblado"><div class="card-img"><img src="img/mompox.png" alt="Mompox" loading="lazy"/><div class="card-img-overlay"></div><div class="card-badges"><span class="tag tag-gold">Remodelado</span><span class="tag tag-green">Premium</span></div><div class="card-price"><small>Precio</small>$808 M</div><div class="card-zone">El Poblado - Los Balsos</div></div><div class="card-body"><div class="card-location">El Poblado - Cll 12 Sur #25-237</div><div class="card-title">Mompox</div><div class="specs"><div class="spec"><div class="spec-icon">🛏</div><span class="spec-val">3</span><span class="spec-lbl">Hab.</span></div><div class="spec"><div class="spec-icon">🚿</div><span class="spec-val">3</span><span class="spec-lbl">Banos</span></div><div class="spec"><div class="spec-icon">📐</div><span class="spec-val">102m2</span><span class="spec-lbl">Area</span></div><div class="spec"><div class="spec-icon">🚗</div><span class="spec-val">2 Parq.</span><span class="spec-lbl">Garaje</span></div></div><div class="features"><span class="feat">Zona verde</span><span class="feat">Salon comunal</span><span class="feat">Porteria</span><span class="feat">Zona ninos</span><span class="feat">35 anos</span></div><div class="card-meta"><span>Adm. consultar con broker</span><span class="estrato">Estrato 6</span></div><div class="card-cta"><a class="btn-wa" href="https://wa.me/573007455245?text=Hola%2C%20me%20interesa%20Mompox%20en%20El%20Poblado%20%28%24808M%29.%20Podemos%20hablar%3F" target="_blank" rel="noopener"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Consultar</a><a class="btn-detail" href="#contacto">Mas info</a></div></div></div>
+<div class="card" data-zone="El Poblado"><div class="card-img"><img src="img/providencia.png" alt="Providencia de Castropol" loading="lazy"/><div class="card-img-overlay"></div><div class="card-badges"><span class="tag tag-green">Premium</span></div><div class="card-price"><small>Precio</small>$670 M</div><div class="card-zone">El Poblado - Castropol</div></div><div class="card-body"><div class="card-location">El Poblado - Cll 17 #37A-80</div><div class="card-title">Providencia de Castropol</div><div class="specs"><div class="spec"><div class="spec-icon">🛏</div><span class="spec-val">3</span><span class="spec-lbl">Hab.</span></div><div class="spec"><div class="spec-icon">🚿</div><span class="spec-val">2</span><span class="spec-lbl">Banos</span></div><div class="spec"><div class="spec-icon">📐</div><span class="spec-val">82m2</span><span class="spec-lbl">Area</span></div><div class="spec"><div class="spec-icon">🚗</div><span class="spec-val">1 Parq.</span><span class="spec-lbl">Garaje</span></div></div><div class="features"><span class="feat">Conj. cerrado</span><span class="feat">Zona verde</span><span class="feat">Salon comunal</span><span class="feat">Porteria</span><span class="feat">24 anos</span></div><div class="card-meta"><span>Adm. consultar con broker</span><span class="estrato">Estrato 6</span></div><div class="card-cta"><a class="btn-wa" href="https://wa.me/573007455245?text=Hola%2C%20me%20interesa%20Providencia%20de%20Castropol%20%28%24670M%29.%20Podemos%20hablar%3F" target="_blank" rel="noopener"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Consultar</a><a class="btn-detail" href="#contacto">Mas info</a></div></div></div>
+<div class="card" data-zone="El Poblado"><div class="card-img"><img src="img/serrania.png" alt="Serrania" loading="lazy"/><div class="card-img-overlay"></div><div class="card-badges"><span class="tag tag-green">Premium</span></div><div class="card-price"><small>Precio</small>$855 M</div><div class="card-zone">El Poblado - San Lucas</div></div><div class="card-body"><div class="card-location">El Poblado - Cll 20 Sur #25B-265</div><div class="card-title">Serrania</div><div class="specs"><div class="spec"><div class="spec-icon">🛏</div><span class="spec-val">4</span><span class="spec-lbl">Hab.</span></div><div class="spec"><div class="spec-icon">🚿</div><span class="spec-val">3</span><span class="spec-lbl">Banos</span></div><div class="spec"><div class="spec-icon">📐</div><span class="spec-val">103m2</span><span class="spec-lbl">Area</span></div><div class="spec"><div class="spec-icon">🏢</div><span class="spec-val">Piso 7</span><span class="spec-lbl">Nivel</span></div></div><div class="features"><span class="feat">1 Parqueadero</span><span class="feat">Vista privilegiada</span><span class="feat">38 anos</span></div><div class="card-meta"><span>Adm. consultar con broker</span><span class="estrato">Estrato 6</span></div><div class="card-cta"><a class="btn-wa" href="https://wa.me/573007455245?text=Hola%2C%20me%20interesa%20Serrania%20en%20El%20Poblado%20%28%24855M%29.%20Podemos%20hablar%3F" target="_blank" rel="noopener"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Consultar</a><a class="btn-detail" href="#contacto">Mas info</a></div></div></div>
+<div class="card" data-zone="Sabaneta"><div class="card-img"><img src="img/aramus.png" alt="Aramus" loading="lazy"/><div class="card-img-overlay"></div><div class="card-badges"><span class="tag tag-gold">Remodelado</span><span class="tag tag-green">Disponible</span></div><div class="card-price"><small>Precio</small>$487 M</div><div class="card-zone">Sabaneta - V. La Doctora</div></div><div class="card-body"><div class="card-location">Sabaneta - Cll 75 Sur #34-240</div><div class="card-title">Aramus</div><div class="specs"><div class="spec"><div class="spec-icon">🛏</div><span class="spec-val">3</span><span class="spec-lbl">Hab.</span></div><div class="spec"><div class="spec-icon">🚿</div><span class="spec-val">2</span><span class="spec-lbl">Banos</span></div><div class="spec"><div class="spec-icon">📐</div><span class="spec-val">82m2</span><span class="spec-lbl">Area</span></div><div class="spec"><div class="spec-icon">🏢</div><span class="spec-val">Piso 27</span><span class="spec-lbl">Nivel</span></div></div><div class="features"><span class="feat">Conj. cerrado</span><span class="feat">Porteria</span><span class="feat">1 Parq.</span><span class="feat">11 anos</span></div><div class="card-meta"><span>Adm. consultar con broker</span><span class="estrato">Estrato 3</span></div><div class="card-cta"><a class="btn-wa" href="https://wa.me/573007455245?text=Hola%2C%20me%20interesa%20Aramus%20en%20Sabaneta%20piso%2027%20%28%24487M%29.%20Podemos%20hablar%3F" target="_blank" rel="noopener"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Consultar</a><a class="btn-detail" href="#contacto">Mas info</a></div></div></div>
+<div class="card" data-zone="El Poblado"><div class="card-img"><img src="img/distrito.png" alt="Distrito Vera" loading="lazy"/><div class="card-img-overlay"></div><div class="card-badges"><span class="tag tag-green">Nuevo 3 anos</span></div><div class="card-price"><small>Precio</small>$777 M</div><div class="card-zone">El Poblado - Villa Carlota</div></div><div class="card-body"><div class="card-location">El Poblado - Cra 44 #20-28</div><div class="card-title">Distrito Vera</div><div class="specs"><div class="spec"><div class="spec-icon">🛏</div><span class="spec-val">1</span><span class="spec-lbl">Hab.</span></div><div class="spec"><div class="spec-icon">🚿</div><span class="spec-val">2</span><span class="spec-lbl">Banos</span></div><div class="spec"><div class="spec-icon">📐</div><span class="spec-val">80m2</span><span class="spec-lbl">Area</span></div><div class="spec"><div class="spec-icon">🏢</div><span class="spec-val">Piso 5</span><span class="spec-lbl">Nivel</span></div></div><div class="features"><span class="feat">Piscina</span><span class="feat">Conj. cerrado</span><span class="feat">Porteria</span><span class="feat">1 Parq.</span></div><div class="card-meta"><span>Adm. consultar con broker</span><span class="estrato">Estrato 5</span></div><div class="card-cta"><a class="btn-wa" href="https://wa.me/573007455245?text=Hola%2C%20me%20interesa%20Distrito%20Vera%20en%20El%20Poblado%20%28%24777M%29.%20Podemos%20hablar%3F" target="_blank" rel="noopener"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Consultar</a><a class="btn-detail" href="#contacto">Mas info</a></div></div></div>
+<div class="card" data-zone="Itagui"><div class="card-img"><img src="img/moratto.png" alt="Moratto" loading="lazy"/><div class="card-img-overlay"></div><div class="card-badges"><span class="tag tag-gold">Remodelado</span><span class="tag tag-green">Disponible</span></div><div class="card-price"><small>Precio</small>$500 M</div><div class="card-zone">Itagui Piso 19</div></div><div class="card-body"><div class="card-location">Itagui - Barrio Suramerica</div><div class="card-title">Moratto</div><div class="specs"><div class="spec"><div class="spec-icon">🛏</div><span class="spec-val">3</span><span class="spec-lbl">Hab.</span></div><div class="spec"><div class="spec-icon">🚿</div><span class="spec-val">2</span><span class="spec-lbl">Banos</span></div><div class="spec"><div class="spec-icon">📐</div><span class="spec-val">88m2</span><span class="spec-lbl">Area</span></div><div class="spec"><div class="spec-icon">🏢</div><span class="spec-val">Piso 19</span><span class="spec-lbl">Nivel</span></div></div><div class="features"><span class="feat">Piscina</span><span class="feat">Gimnasio</span><span class="feat">Zonas humedas</span><span class="feat">Salon comunal</span><span class="feat">6 anos</span></div><div class="card-meta"><span>Adm. consultar con broker</span><span class="estrato">Estrato 4</span></div><div class="card-cta"><a class="btn-wa" href="https://wa.me/573007455245?text=Hola%2C%20me%20interesa%20Moratto%20en%20Itagui%20%28%24500M%29.%20Podemos%20hablar%3F" target="_blank" rel="noopener"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Consultar</a><a class="btn-detail" href="#contacto">Mas info</a></div></div></div>
+<div class="card" data-zone="La Estrella"><div class="card-img"><img src="img/nizza.png" alt="Nizza" loading="lazy"/><div class="card-img-overlay"></div><div class="card-badges"><span class="tag tag-gold">Remodelado</span><span class="tag tag-green">Nuevo 3 anos</span></div><div class="card-price"><small>Precio</small>$530 M</div><div class="card-zone">La Estrella - Los Horizontes</div></div><div class="card-body"><div class="card-location">La Estrella - Cra 62a #76sur-60</div><div class="card-title">Nizza</div><div class="specs"><div class="spec"><div class="spec-icon">🛏</div><span class="spec-val">3</span><span class="spec-lbl">Hab.</span></div><div class="spec"><div class="spec-icon">🚿</div><span class="spec-val">2</span><span class="spec-lbl">Banos</span></div><div class="spec"><div class="spec-icon">📐</div><span class="spec-val">75m2</span><span class="spec-lbl">Area</span></div><div class="spec"><div class="spec-icon">🏢</div><span class="spec-val">Piso 13</span><span class="spec-lbl">Nivel</span></div></div><div class="features"><span class="feat">Zona BBQ</span><span class="feat">Salon comunal</span><span class="feat">Porteria</span><span class="feat">1 Parq.</span></div><div class="card-meta"><span>Adm. consultar con broker</span><span class="estrato">Estrato 4</span></div><div class="card-cta"><a class="btn-wa" href="https://wa.me/573007455245?text=Hola%2C%20me%20interesa%20Nizza%20en%20La%20Estrella%20%28%24530M%29.%20Podemos%20hablar%3F" target="_blank" rel="noopener"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Consultar</a><a class="btn-detail" href="#contacto">Mas info</a></div></div></div>
+<div class="card" data-zone="La Estrella"><div class="card-img"><img src="img/primitiva.png" alt="Primitiva" loading="lazy"/><div class="card-img-overlay"></div><div class="card-badges"><span class="tag tag-gold">Remodelado</span><span class="tag tag-green">Nuevo 3 anos</span></div><div class="card-price"><small>Precio</small>$265 M</div><div class="card-zone">La Estrella - La Inmaculada</div></div><div class="card-body"><div class="card-location">La Estrella - Cra 51 #96BSur-119</div><div class="card-title">Primitiva</div><div class="specs"><div class="spec"><div class="spec-icon">🛏</div><span class="spec-val">3</span><span class="spec-lbl">Hab.</span></div><div class="spec"><div class="spec-icon">🚿</div><span class="spec-val">2</span><span class="spec-lbl">Banos</span></div><div class="spec"><div class="spec-icon">📐</div><span class="spec-val">56m2</span><span class="spec-lbl">Area</span></div><div class="spec"><div class="spec-icon">🏢</div><span class="spec-val">Piso 1</span><span class="spec-lbl">Nivel</span></div></div><div class="features"><span class="feat">Piscina</span><span class="feat">Zona BBQ</span><span class="feat">Zona verde</span><span class="feat">Salon comunal</span></div><div class="card-meta"><span>Adm. consultar con broker</span><span class="estrato">Estrato 3</span></div><div class="card-cta"><a class="btn-wa" href="https://wa.me/573007455245?text=Hola%2C%20me%20interesa%20Primitiva%20en%20La%20Estrella%20%28%24265M%29.%20Podemos%20hablar%3F" target="_blank" rel="noopener"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Consultar</a><a class="btn-detail" href="#contacto">Mas info</a></div></div></div>
   </div>
 
+  <div class="trust">
+    <div class="trust-item"><svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg><strong>Propiedades verificadas</strong>Inventario oficial Habi Technologies</div>
+    <div class="trust-item"><svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg><strong>Asesoria 100% gratuita</strong>Sin comisiones para el comprador</div>
+    <div class="trust-item"><svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><strong>Respuesta en 30 min</strong>En horario habil lunes a sabado</div>
+    <div class="trust-item"><svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg><strong>HabiCredit disponible</strong>Credito hipotecario sin salir de casa</div>
+  </div>
+
+  <div class="contact-section" id="contacto">
+    <div class="contact-left">
+      <div class="eyebrow">Asesoria personalizada</div>
+      <h2>Cuentame que estas buscando</h2>
+      <p>Completa el formulario y te contacto en menos de 30 minutos con opciones reales ajustadas a tu perfil.</p>
+      <ul class="contact-checklist">
+        <li>Sin compromiso de compra</li>
+        <li>Asesoria totalmente gratuita</li>
+        <li>Opciones segun tu presupuesto real</li>
+        <li>Acompanamiento hasta el cierre</li>
+        <li>HabiCredit si necesitas financiacion</li>
+      </ul>
+    </div>
+    <div class="contact-right">
+      <h3>Solicitar asesoria gratuita</h3>
+      <p class="sub">Todos los campos son importantes para encontrarte la mejor opcion.</p>
+      <form id="crmForm">
+        <div class="form-grid">
+          <div class="form-group"><label>Nombre completo *</label><input type="text" name="nombre" placeholder="Ej: Carlos Martinez" required/></div>
+          <div class="form-group"><label>WhatsApp *</label><input type="tel" name="whatsapp" placeholder="3001234567" required/></div>
+          <div class="form-group"><label>Proposito *</label><select name="proposito" required><option value="">Seleccionar...</option><option>Vivir</option><option>Inversion</option></select></div>
+          <div class="form-group"><label>Zona de interes *</label><select name="zona" required><option value="">Seleccionar...</option><option>El Poblado</option><option>Laureles</option><option>Envigado</option><option>Sabaneta</option><option>El Retiro</option><option>La Estrella</option><option>Itagui</option><option>Cualquier zona</option></select></div>
+          <div class="form-group full"><label>Presupuesto (millones COP) *</label><div class="budget-row"><div class="input-prefix"><span>$</span><input type="number" name="presupuesto_min" placeholder="Minimo" min="100" max="2000"/></div><div class="input-prefix"><span>$</span><input type="number" name="presupuesto_max" placeholder="Maximo" min="100" max="2000"/></div></div></div>
+          <div class="form-group"><label>Forma de pago *</label><select name="forma_pago" required><option value="">Seleccionar...</option><option>Contado</option><option>Credito hipotecario</option><option>No lo he definido</option></select></div>
+          <div class="form-group"><label>Habitaciones</label><select name="habitaciones"><option value="">Indiferente</option><option>1 habitacion</option><option>2 habitaciones</option><option>3 habitaciones</option><option>4+ habitaciones</option></select></div>
+        </div>
+        <button type="submit" class="form-submit" id="submitBtn">Solicitar asesoria gratuita</button>
+        <p class="form-note">Al enviar aceptas nuestra <a href="https://jmolinapalacio-ai.github.io/politicas-de-privacidad/" target="_blank">Politica de Privacidad</a>. Tus datos no seran compartidos con terceros.</p>
+      </form>
+      <div class="form-success" id="formSuccess"><h4>Recibido! Te contactare pronto.</h4><p>Tu solicitud fue registrada. Me comunicare contigo por WhatsApp en menos de 30 minutos (horario habil).</p></div>
+    </div>
+  </div>
 </main>
 
-<!-- FOOTER -->
 <footer>
-  <div class="legal-links">
-    <a href="index.html">Política de Privacidad</a>
-    <a href="condiciones-del-servicio.html">Condiciones del Servicio</a>
-    <a href="eliminacion-datos.html">Eliminación de Datos</a>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo"><div class="dot"></div>Habi Medellin</div>
+      <p>Broker inmobiliario oficial de Habi Technologies en Medellin y area metropolitana. Asesoria gratuita, propiedades verificadas.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/TUPAGINA" target="_blank" rel="noopener"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="https://www.instagram.com/TUPAGINA" target="_blank" rel="noopener"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://wa.me/573007455245" target="_blank" rel="noopener"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Zonas</h4><ul><li><a href="#propiedades">El Poblado</a></li><li><a href="#propiedades">Envigado</a></li><li><a href="#propiedades">Sabaneta</a></li><li><a href="#propiedades">La Estrella</a></li><li><a href="#propiedades">Itagui</a></li></ul></div>
+    <div class="footer-col"><h4>Legal</h4><ul><li><a href="https://jmolinapalacio-ai.github.io/politicas-de-privacidad/">Politica de Privacidad</a></li><li><a href="https://jmolinapalacio-ai.github.io/politicas-de-privacidad/condiciones-del-servicio.html">Condiciones del Servicio</a></li><li><a href="https://jmolinapalacio-ai.github.io/politicas-de-privacidad/eliminacion-datos.html">Eliminacion de Datos</a></li></ul></div>
   </div>
-  <p>&copy; 2026 Asesoría Inmobiliaria Habi — Medellín, Colombia. Broker independiente autorizado.</p>
-  <p style="margin-top:6px; font-size:12px;">
-    Los precios son orientativos y pueden cambiar sin previo aviso. Sujetos a disponibilidad del inventario Habi Technologies S.A.S.
-  </p>
+  <div class="footer-bottom"><p>2026 Asesoria Inmobiliaria Habi - Medellin, Colombia. Broker independiente autorizado por Habi Technologies S.A.S. Precios orientativos sujetos a disponibilidad.</p></div>
 </footer>
 
+<script>
+  document.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const zone=btn.dataset.zone;
+      document.querySelectorAll('.card').forEach(card=>{
+        card.style.display=(zone==='all'||card.dataset.zone===zone)?'':'none';
+      });
+    });
+  });
+  const SCRIPT_URL='PEGAR_URL_APPS_SCRIPT_AQUI';
+  const form=document.getElementById('crmForm');
+  const submitBtn=document.getElementById('submitBtn');
+  const ok=document.getElementById('formSuccess');
+  form.addEventListener('submit',async(e)=>{
+    e.preventDefault();
+    submitBtn.disabled=true;submitBtn.textContent='Enviando...';
+    const data=Object.fromEntries(new FormData(form));
+    data.fecha=new Date().toLocaleString('es-CO',{timeZone:'America/Bogota'});
+    data.fuente='Portafolio Web';
+    try{
+      if(SCRIPT_URL!=='PEGAR_URL_APPS_SCRIPT_AQUI'){
+        await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+      }
+      form.style.display='none';ok.style.display='block';
+      setTimeout(()=>{
+        const msg=encodeURIComponent('Hola, soy '+data.nombre+'. Complete el formulario del portafolio. Busco en '+data.zona+', presupuesto $'+data.presupuesto_min+'M-$'+data.presupuesto_max+'M, pago '+data.forma_pago+'.');
+        window.open('https://wa.me/573007455245?text='+msg,'_blank');
+      },2000);
+    }catch(err){
+      submitBtn.disabled=false;submitBtn.textContent='Solicitar asesoria gratuita';
+      alert('Error al enviar. Por favor escribenos por WhatsApp.');
+    }
+  });
+</script>
 </body>
 </html>
